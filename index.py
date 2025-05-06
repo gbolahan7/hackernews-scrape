@@ -32,15 +32,15 @@ def create_custom_hn(links, votes):
     for idx, item in enumerate(links):
         title = item.getText()
         href = item.a['href']
-        # Make sure there's a corresponding vote item
+        
         if idx < len(votes):
-            points_text = votes[idx].getText()  # e.g. '57 points'
+            points_text = votes[idx].getText() 
             points = int(points_text.replace(' points', ''))
-            if points > 99:  # Optional filter: only show stories with more than 99 points
+            if points > 99:  # only show stories with more than 99 points
                 hn.append({'title': title, 'link': href, 'votes': points})
     return sorted(hn, key=lambda x: x['votes'], reverse=True)
 
 custom_hn = create_custom_hn(links, votes)
 
-for story in custom_hn:
-    print(f"{story['votes']} points | {story['title']} | {story['link']}")
+for item in custom_hn:
+    print(item)
